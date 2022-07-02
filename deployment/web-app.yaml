@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app-deployment
+  name: webinar-web-app-deployment
   labels:
-    app: web-app
+    app: webinar-web-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-app
+      app: webinar-web-app
   template:
     metadata:
-      name: web-app
+      name: webinar-web-app
       labels:
-        app: web-app
+        app: webinar-web-app
     spec:
       containers:
-        - name: web-app
-          image: acrcicd56.azurecr.io/muralikrishna188/k8s-ci-cd:latest
+        - name: webinar-web-app
+          image: acrcicd56.azurecr.io/muralikrishna188/k8s-ci-cd
           imagePullPolicy: Always
           ports:
           - containerPort: 3000
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app-svc
+  name: webinar-web-app-svc
 spec:
   selector:
-    app: web-app
+    app: webinar-web-app
   ports:
     - port: 80
       targetPort: 3000
